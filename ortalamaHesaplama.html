@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS 2022 Deneme Ders--- Uygulama 1</title>
+</head>
+
+<body>
+
+  <script type="text/javascript" > 
+
+     var isim 
+     isim = prompt ("Adınızı Giriniz")
+      
+	 var soyisim 
+	 soyisim = prompt ("Soyadınızı Giriniz")
+	 
+	 var cinsiyet
+	 cinsiyet = prompt ("Cinsiyetinizi Giriniz")
+	 
+	 var ders
+	 
+	 ders = prompt ("Ders Adını Giriniz")
+	 
+	 var not1
+	 
+	 not1 = prompt ("1.Ders Notunuzu Giriniz")
+	 
+	 var not2
+	 
+	 not2 = prompt ("2.Ders Notunuzu Giriniz")
+	 
+	 var ortalama
+	 
+	 ortalama = (Number(not1) + Number(not2))/2 
+	  
+	  /* Satır 35 de Number ile belli etmemizin sebebi prompt sayısal ifadeyi doğrudan algılamadığı için
+    sayısal ifade olduğunu belli ediyoruz. Aksi taktirde string olarak algılayıp düz şekilde çıkartır.
+ 
+ */
+	 document.write(isim," " ,soyisim," ",cinsiyet,
+	 "<br>", ders, " 1.Sınav Notunuz   ", not1, " "," ","2.Sınav Notunuz   ",not2 
+	  ) 
+	  
+	  document.write ("<br>Ortalamanız =", ortalama)
+	 
+
+
+
+  </script>
+
+</body>
+</html>

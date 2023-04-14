@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS Not Hesaplama</title>
+<style type="text/css">
+#puan { width:200px; height:40px; background:#FC0; color:#fff; text-align:center; line-height:40px; border:1px solid #000; border-radius:5px; font:bold 20px verdana}
+
+</style>
+<script type="text/javascript">
+var vize=prompt("Vize Notunu Giriniz","Notunuzu giriniz")
+var final=prompt("Final Notunu Giriniz","Notunuzu giriniz")
+var sonuc =(vize*0.4)+(final*0.6)
+
+document.write("Vize Sonucu ",vize," ve ","<br>")
+document.write("Final Sonucu ",final," = ","<br>")
+document.write("Not Ortalaması ",sonuc,"<br/>")
+if(sonuc<25)
+{document.write("FF")}
+else if(sonuc>=25 && sonuc<30)
+{document.write("FD")}
+else if(sonuc>=25 && sonuc<35)
+{document.write("DD")}
+else if(sonuc>=35 && sonuc<45)
+{document.write("CD")}
+else if(sonuc>=45 && sonuc<55)
+{document.write("CC")}
+else if(sonuc>=55 && sonuc<65)
+{document.write("CB")}
+else if(sonuc>=65 && sonuc<75)
+{document.write("BB")}
+else if(sonuc>=75 && sonuc<85)
+{document.write("BA")}
+else 
+{document.write("AA")}
+
+
+
+
+
+
+
+</script>
+</head>
+<body>
+
+<div id="puan"></div>
+</body>
+</html>

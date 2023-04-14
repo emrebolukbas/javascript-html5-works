@@ -1,0 +1,74 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS Hareketli Kutular</title>
+<style type="text/css">
+body { background:#C96}
+.hepsi { width:850px; height:90px; background:#0FF; position:relative; top:0; left:0; border:2px solid #000; border-radius:50px}
+#kutu1 { width:50px; height:50px; background:#fe5dde; float:left; position:absolute; top:20px; border-radius:25px}
+#kutu2 { width:50px; height:50px; background:#aa8800; float:left; position:absolute; top:20px; left:450px; border-radius:25px;}
+</style>
+<script type="text/javascript">
+var x1=0, x2=450, zaman1, zaman2,
+zaman1=window.setInterval("ileri1()",1)
+
+function ileri1()
+{
+document.getElementById("kutu1").style.left=x1;
+if(x1==400)
+{
+     dur1();
+}
+x1++;	
+}
+
+function dur1()
+
+{window.clearInterval(zaman1);
+zaman2=window.setInterval("ileri2()",1)
+}
+
+function ileri2()
+{
+document.getElementById("kutu2").style.left=x2;
+if(x2==800)
+{
+     dur2();
+}
+x2++;	
+}
+function dur2()
+
+{window.clearInterval(zaman2);
+zaman2=window.setInterval("geri2()",1)
+}
+function geri2()
+{
+document.getElementById("kutu2").style.left=x2;
+if(x2==450)
+{
+ window.clearInterval(zaman2); 
+ zaman1=window.setInterval("geri1()",1)   
+}
+x2--;
+}
+function geri1()
+{
+document.getElementById("kutu1").style.left=x1;
+if(x1==0)
+{
+ window.clearInterval(zaman1);
+ zaman1=window.setInterval("ileri1()",1) 
+}
+x1--;
+}
+
+</script>
+</head>
+<body>
+<div class="hepsi">
+<div id="kutu1"></div>
+<div id="kutu2"></div>
+</div>
+</body>
+</html>

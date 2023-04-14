@@ -1,0 +1,87 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS Zaman Fonksiyonu Örnek</title>
+<style type="text/css">
+#hepsi { width:500px; height:500px; background:#663; border:none;}
+#kutu1 { width:50px; height:50px; background:#0F9; float:left; position:absolute; top:20px; left:20px; border:1px solid #000; text-align:center; font:solid 20px tahoma; color:#000; line-height:50px; z-index:4}
+#kutu2 { width:50px; height:50px; background:#f3a; float:left; position:absolute; left:440px; top:20px; border:1px solid #000; text-align:center; font:solid 20px tahoma; color:#000; line-height:50px; z-index:3}
+#kutu3 { width:50px; height:50px; background:#6bf3ea; float:left; position:absolute; left:20px; top:440px; border:1px solid #000; text-align:center; font:solid 20px tahoma; color:#000; line-height:50px;z-index:1} 
+#kutu4 { width:50px; height:50px; background:#c3b6f2; float:left; position:absolute; left:440px; top:440px; border:1px solid #000; text-align:center; font:solid 20px tahoma; color:#000; line-height:50px;z-index:2}
+</style>
+<script type="text/javascript">
+var x1=20, x2=20, x3=440, x4=440, zaman1, zaman2, zaman3, zaman4
+zaman1=window.setInterval("ileri1()",10)
+
+function ileri1()
+{
+document.getElementById("kutu1").style.left=x1;
+
+if (x1==440)
+{
+ dur1 ()	
+}
+x1++;	
+}
+
+function dur1()
+{
+window.clearInterval(zaman1)
+zaman2=window.setInterval("ileri2()",10)	
+}
+function ileri2()
+{
+document.getElementById("kutu2").style.top=x2;
+
+if (x2==440)
+{
+ dur2 ()	
+}
+x2++;	
+}
+
+function dur2()
+{
+window.clearInterval(zaman2)
+zaman3=window.setInterval("ileri3()",10)	
+}
+function ileri3()
+{
+document.getElementById("kutu4").style.left=x3;
+
+if (x3==20)
+{
+ dur3 ()	
+}
+x3--;	
+}
+
+function dur3()
+{
+window.clearInterval(zaman3)
+zaman4=window.setInterval("ileri4()",10)	
+}
+function ileri4()
+{
+document.getElementById("kutu3").style.top=x4;	
+
+if(x4==20)
+{
+ dur4 ()	
+}
+x4--;
+}
+function dur4()
+{ window.clearInterval(zaman4)	
+	}
+</script>
+</head>
+<body>
+<div id="hepsi">
+<div id="kutu1">1</div>
+<div id="kutu2">2</div>
+<div id="kutu3">4</div>
+<div id="kutu4">3</div>
+</div>
+</body>
+</html>

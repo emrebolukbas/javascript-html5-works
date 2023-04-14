@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>JS Form ve Güvenlik Kodu</title>
+<style>
+input:focus, select:focus { outline:none}
+
+body { font:12px tahoma;}
+.form1 { width:610; height:450px; margin:60px auto; background:url(images/formarka.jpg) no-repeat; padding:100px 0 0 40px;}
+td { height:30px;}
+#gonder { width:120px; height:30px; border:2px solid #9d3a56; background:#933; border-radius:3px; color:#fff; font-weight:bold;}
+#gonder:hover { border-color:#9b4562; background:#72273c;}
+#gkod{ width:150px; height:56px; background:url(images/guvenlik.jpg) ; font:bold 30px tahoma; color:#fff; text-align:center; border:none;
+ text-shadow:0 1px 1px #000}
+#gun, #ay { width:50px; height:25px; color:#000; border:1px solid #999; background:#fff; border-radius:3px;}
+#ad, #soyad, #kadi, #mail, #gkodgir{ width:175px; height:25px; border:1px solid #999; background:#fff; border-radius:3px; color:#ababab; padding: 0 0 0 2px;}
+#parola { width:175px; height:25px; border:1px solid #999; background:#fff; border-radius:3px; color:#000; padding: 0 0 0 2px;}
+#yil, #dyeri { width:100px; height:25px; color:#000; border:1px solid #999; background:#fff; border-radius:3px; }
+span {color:#b00; font:11px tahoma;}
+#gonder { cursor:pointer}
+</style>
+<script>
+
+function koduret()
+{var kodlar=""
+for( var i=1;i<=6;i++)
+ if(Math.round(Math.random())==1)
+ 
+ {kodlar=kodlar+String.fromCharCode(48+9*Math.random())
+ }
+ else
+ { kodlar=kodlar+String.fromCharCode(65+25*Math.random())}
+ document.getElementById("gkod").value=kodlar;;
+}
+function odaklan(x)
+{
+	if(x=="ad" || x=="soyad" || x=="kadi" || x=="mail" || x=="gkodgir")
+	{
+	 document.getElementById(x).value=""
+	 document.getElementById(x).style.background="#fff7db";
+	 document.getElementById(x).style.color="#000"
+	 document.getElementById(x).style.borderColor="#000"
+		}
+}
+	function ayril(x,y)
+	{
+	 if(y=="")
+	
+	 {
+	  if (x=="ad")
+		{document.getElementById(x).value="Adınızı yazınız" }
+		if (x=="soyad")
+		{document.getElementById(x).value="Soyadınızı yazınız" }
+		if (x=="kadi")
+		{document.getElementById(x).value="Kullanıcı adınızı yazınız"}
+		if (x=="mail")
+		{document.getElementById(x).value="E-Mail giriniz" }	
+		if (x=="gkodgir")
+		{document.getElementById(x).value="Güvenlik Kodunu giriniz"}
+		
+		document.getElementById(x).style.background="#fff";
+	    document.getElementById(x).style.color="#ababab"
+	    document.getElementById(x).style.borderColor="#bbb"
+	 }
+	 else 
+	 {
+		document.getElementById(x).style.background="#fff";
+	    document.getElementById(x).style.color="#000"
+	    document.getElementById(x).style.borderColor="#bbb" 
+		 
+		 }
+	 }
+	 function islem()
+	 
+	 {  document.getElementById("aduyari").innerHTML="";
+	 document.getElementById("kadiuyari").innerHTML="";
+	 document.getElementById("soyaduyari").innerHTML="";
+	 document.getElementById("mailuyari").innerHTML="";
+	 document.getElementById("gkoduyari").innerHTML="";
+	 
+	  var kural, yazi;
+	  yazi=document.getElementById("mail").value
+	  kural=/.+@.+\.+./; 
+		 if(document.getElementById("ad").value=="Adınızı yazınız")
+		 {document.getElementById("aduyari").innerHTML="Adınızı yazmadınız!"
+		 }
+		 
+		 if(document.getElementById("soyad").value=="Soyadınızı yazınız")
+		 {document.getElementById("soyaduyari").innerHTML="Soyadınızı yazmadınız!"
+		 }
+		 
+		
+		 if(document.getElementById("kadi").value=="Kullanıcı adınızı yazınız")
+		 {document.getElementById("kadiuyari").innerHTML="Kullanıcı adınızı yazmadınız!"
+		 }
+		 
+		
+		 if(document.getElementById("parola").value=="")
+		 {document.getElementById("parolauyari").innerHTML="Parola giriniz!"
+		 }
+		 
+		   else
+		 {document.getElementById("parolauyari").innerHTML=""}
+		 
+		 if(document.getElementById("mail").value=="E-Mail giriniz")
+		 {document.getElementById("mailuyari").innerHTML="E-Mail yazmadınız!"} 
+		 else if(!kural.test(yazi))
+		  {document.getElementById("mailuyari").innerHTML="Geçersiz Mail!!!"}
+		 
+		 
+		  if(document.getElementById("gkodgir").value=="Güvenlik Kodunu giriniz")
+		 {document.getElementById("gkoduyari").innerHTML="Güvenlik Kodunu girmediniz!"}
+		 
+		
+		 else if (document.getElementById("gkod").value!=document.getElementById("gkodgir").value)
+		 { document.getElementById("gkoduyari").innerHTML="Güvenlik Kodu yanlış!"}
+		 
+		}
+
+
+
+
+</script>
+</head>
+<body onload="koduret()">
+<div class="form1">
+<form action="" method="get">
+<table width="630" border="0">
+  <tr>
+    <td width="180">Adı:</td>
+    <td width="270"><input name="" id="ad" value="Adınızı yazınız" onfocus="odaklan(this.id)" onblur="ayril(this.id,this.value)" type="text" /></td>
+    <td width="180"><span id="aduyari"></span></td>
+  </tr>
+  <tr>
+    <td>Soyadı:</td>
+    <td><input name="" id="soyad" value="Soyadınızı yazınız" onfocus="odaklan(this.id)" onblur="ayril(this.id,this.value)"  type="text" /></td>
+    <td><span id="soyaduyari"></span></td>
+  </tr>
+  <tr>
+    <td>Kullanıcı Adı:</td>
+    <td><input name="" id="kadi" value="Kullanıcı adınızı yazınız" onfocus="odaklan(this.id)" onblur="ayril(this.id,this.value)"   type="text" /></td>
+    <td><span id="kadiuyari"></span></td>
+  </tr>
+  <tr>
+    <td>Parola:</td>
+    <td><input name="" id="parola" type="password" /></td>
+    <td><span id="parolauyari"></span></td>
+  </tr>
+  <tr>
+    <td>E-Mail:</td>
+    <td><input name="" id="mail" value="E-Mail giriniz" onfocus="odaklan(this.id)" onblur="ayril(this.id,this.value)"  type="text" /></td>
+    <td><span id="mailuyari"></span></td>
+  </tr>
+  <tr>
+    <td>Doğum Tarihi:</td>
+    <td><select name="" id="gun">
+      <option selected="selected">Gün</option>
+      <option value="01">01</option>
+      <option value="02">02</option>
+      <option value="03">03</option>
+      <option value="04">04</option>
+      <option value="05">05</option>
+      <option value="06">06</option>
+      <option value="07">07</option>
+      <option value="08">08</option>
+      <option value="09">09</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+      <option value="13">13</option>
+      <option value="14">14</option>
+      <option value="15">15</option>
+      <option value="16">16</option>
+      <option value="17">17</option>
+      <option value="18">18</option>
+      <option value="19">19</option>
+      <option value="20">20</option>
+      <option value="21">21</option>
+      <option value="22">22</option>
+      <option value="23">23</option>
+      <option value="24">24</option>
+      <option value="25">25</option>
+      <option value="26">26</option>
+      <option value="27">27</option>
+      <option value="28">28</option>
+      <option value="29">29</option>
+      <option value="30">30</option>
+      <option value="31">31</option>
+    </select> 
+    <select name="" id="ay">
+       <option selected="selected">Ay</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+    </select> 
+    <select name="" id="yil">
+      <option selected="selected">Yıl</option>
+      <option value="1989">1989</option>
+      <option value="1990">1990</option>
+      <option value="1991">1991</option>
+      <option value="1992">1992</option>
+      <option value="1993">1993</option>
+      <option value="1994">1994</option>
+      <option value="1995">1995</option>
+      <option value="1996">1996</option>
+      <option value="1997">1997</option>
+      <option value="1998">1998</option>
+      <option value="1999">1999</option>
+      <option value="2000">2000</option>
+      <option value="2001">2001</option>
+      <option value="2002">2002</option>
+    </select> </td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Doğum Yeri:</td>
+    <td><select id="dyeri">
+      <option selected="selected">İl Seçiniz</option>
+      <option value="istanbul">İstanbul</option>
+      <option value="Adana">Adana</option>
+      <option value="antalya">Antalya</option>
+      <option value="Ankara">Ankara</option>
+      <option value="Artvin">Artvin</option>
+      <option value="agri">Ağrı</option>
+      <option value="Bursa">Bursa</option>
+      <option value="balikesir">Balıkesir</option>
+      <option value="İzmir">İzmir</option>
+      <option value="hatay">Hatay</option>
+      <option value="gümüşhane">Gümüşhane</option>
+      <option value="rize">Rize</option>
+      <option value="Trabzon">Trabzon</option>
+      <option value="eskisehir">Eskişehir</option>
+      <option value="Konya">Konya</option>
+      <option value="mardin">Mardin</option>
+      <option value="Diyarbakır">Diyarbakır</option>
+      <option value="Edirne">Edirne</option>
+      <option value="izmit">İzmit</option>
+      <option value="Mugla">Muğla</option>
+      <option value="Samsun">Samsun</option>
+      <option value="zonguldak">Zonguldak</option>
+      <option value="kayseri">Kayseri</option>
+      <option value="malatya">Malatya</option>
+      <option value="Erzincan">Erzincan</option>
+      <option value="erzurum">Erzurum</option>
+      <option value="Elazığ">Elazığ</option>
+      <option value="Kırklareli">Kırklareli</option>
+      
+    </select></td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>Cinsiyet:</td>
+    <td><input name="cinsiyet" type="radio" value="" /> Kadın <input name="cinsiyet" type="radio" value="" checked="checked" /> Erkek</td>
+    <td><span id="cinsuyari"></span></td>
+  </tr>
+  <tr>
+    <td>Hobiler:</td>
+    <td><input name="" type="checkbox" value="" /> Spor <input name="" type="checkbox" value="" /> Sinema
+    <input name="" type="checkbox" value="" /> Müzik <input name="" type="checkbox" value="" /> Kitap</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td><input id="gkod" /></td>
+    <td><input name="" id="gkodgir" value="Güvenlik Kodunu giriniz" onfocus="odaklan(this.id)" onblur="ayril(this.id,this.value)"  type="text" /></td>
+    <td><span id="gkoduyari"></span></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><input name="" id="gonder" type="button" value="Gönder" onclick="islem()"  /></td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+
+</form>
+
+
+
+
+</div>
+</body>
+</html>

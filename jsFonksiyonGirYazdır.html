@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<style type="text/css">
+#kutu1 { width:400px; height:150px; border:#CCC; background:#333; text-align:justify; border-radius:10px; float:left; margin:10px 30px 10px 10px; font:20px tahoma;color:#fff}
+#gir { width:100px; height:30px; background:#000; border:#fff; clear:both; float:left; margin:0 40px 0 40px; text-align:center; line-height:20px; color:#fff;border-radius:10px;}
+#yazdir { width:120px; height:30px; background:#000; border:#fff; float:left; text-align:center; line-height:20px; color:#fff;border-radius:10px;}
+
+</style>
+<script type="text/javascript">
+function gir()
+{
+ ad=prompt("Adınızı Giriniz")
+ soyad=prompt("Soyadınızı Giriniz")
+ yas=prompt("Yaşınızı Giriniz")
+ meslek=prompt("Mesleğinizi Giriniz")
+	
+}
+function yazdir()
+{
+ document.write("Adınız: ", ad , "<br/>")
+document.write("Soyadınız: ", soyad , "<br/>")
+document.write("Yaşınız: ", yas , "<br/>")
+document.write("Mesleğiniz: ", meslek , "<br/>")
+	
+
+}
+
+
+
+
+</script>
+
+
+</head>
+
+<body bgcolor="#996633">
+
+<input id="gir" name="" type="button" value="Değer Gir" onclick="gir()"/>
+<input id="yazdir" name="" type="button" value="Değerleri Yazdır" onclick="yazdir()"/>
+
+</body>
+</html>
